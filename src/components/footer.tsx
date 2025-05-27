@@ -6,23 +6,29 @@ import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { RESTAURANT_LOGO_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
-
+import { notFound } from "next/navigation";
 export const Footer = async () => {
   const { data: restaurant } = await sanityFetch({
     query: RESTAURANT_LOGO_QUERY,
     params: { slug: "la-cigale" },
   });
 
+  if (!restaurant) {
+    return notFound();
+  }
+
   return (
     <footer>
       <VStack className="w-full h-64 justify-between bg-primary">
         <HStack className="w-full h-full justify-around items-center p-4 text-background">
-          <Image
-            src={urlFor(restaurant.secondary_logo).url()}
-            alt="alt"
-            width={120}
-            height={120}
-          />
+          {restaurant.secondary_logo?.asset && (
+            <Image
+              src={urlFor(restaurant.secondary_logo).url()}
+              alt="alt"
+              width={120}
+              height={120}
+            />
+          )}
           <VStack className="justify-between w-1/4">
             <Link href="https://www.instagram.com/jean_charles_bouchaud/">
               <Text>Instagram</Text>
