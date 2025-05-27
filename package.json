@@ -10,6 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "build-sanity": "sanity build",
+    "dev-sanity": "sanity dev",
+    "deploy-sanity": "sanity deploy",
     "typegen": "sanity schema extract --path=src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
