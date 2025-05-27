@@ -23,8 +23,6 @@ export default async function RestaurantsPage() {
     notFound();
   }
 
-  console.log("test", buildFileUrl(data.bar_menu));
-
   return (
     <VStack className="w-full bg-primary/10 font-delius">
       <section className="w-full h-[70vh] flex items-center justify-center relative">
