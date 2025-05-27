@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { VStack } from "@/components/ui/vstack";
 import { HStack } from "@/components/ui/hstack";
 import Image from "next/image";
-import { buildFileUrl, urlFor } from "@/sanity/lib/utils";
+import { urlFor } from "@/sanity/lib/utils";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { PortableText } from "next-sanity";
 import { Text } from "@/components/ui/text";
@@ -96,14 +96,10 @@ export default async function RestaurantsPage() {
       <section className="p-8 bg-background" id="cartes">
         <HStack className="w-full justify-center items-center gap-8">
           {data.restaurant_menu?.asset && (
-            <OpenPdfButton url={data.restaurant_menu.asset.url}>
-              Carte Restaurant
-            </OpenPdfButton>
+            <OpenPdfButton url={""}>Carte Restaurant</OpenPdfButton>
           )}
           {data.bar_menu?.asset && (
-            <OpenPdfButton url={data.bar_menu.asset.url}>
-              Carte Bar
-            </OpenPdfButton>
+            <OpenPdfButton url={""}>Carte Bar</OpenPdfButton>
           )}
         </HStack>
       </section>
