@@ -42,7 +42,6 @@ function Button({
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
-    icon?: React.ReactNode;
     disabled?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";

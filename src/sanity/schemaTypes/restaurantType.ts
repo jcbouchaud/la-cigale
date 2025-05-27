@@ -148,6 +148,62 @@ export const restaurantType = defineType({
         },
       ],
     }),
+    defineField({
+      title: "Adresse",
+      name: "address",
+      type: "string",
+      validation: (Rule) => Rule.required().error("Adresse requise"),
+    }),
+    defineField({
+      title: "Horaires",
+      name: "hours",
+      type: "array",
+      of: [{ type: "block" }],
+      validation: (Rule) => Rule.required().error("Horaires requises"),
+    }),
+    defineField({
+      title: "Téléphone",
+      name: "phone_number",
+      type: "string",
+      validation: (Rule) => Rule.required().error("Téléphone requis"),
+    }),
+    defineField({
+      title: "Url Facebook",
+      name: "facebook_url",
+      type: "url",
+      validation: (Rule) => Rule.required().error("Url Facebook requise"),
+    }),
+    defineField({
+      title: "Url Instagram",
+      name: "instagram_url",
+      type: "url",
+      validation: (Rule) => Rule.required().error("Url Instagram requise"),
+    }),
+    defineField({
+      title: "Mentions légales",
+      name: "legal_notice",
+      type: "array",
+      of: [{ type: "block" }],
+      validation: (Rule) => Rule.required().error("Mentions légales requises"),
+    }),
+    defineField({
+      title: "Carte Restaurant",
+      name: "restaurant_menu",
+      type: "file",
+      validation: (Rule) => Rule.required().error("Carte Restaurant requise"),
+      options: {
+        accept: "application/pdf",
+      },
+    }),
+    defineField({
+      title: "Carte Bar",
+      name: "bar_menu",
+      type: "file",
+      validation: (Rule) => Rule.required().error("Carte Bar requise"),
+      options: {
+        accept: "application/pdf",
+      },
+    }),
   ],
   preview: {
     select: {

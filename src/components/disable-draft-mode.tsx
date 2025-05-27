@@ -1,6 +1,7 @@
 "use client";
 
 import { useDraftModeEnvironment } from "next-sanity/hooks";
+import { Button } from "./ui/button";
 
 export function DisableDraftMode() {
   const environment = useDraftModeEnvironment();
@@ -13,11 +14,8 @@ export function DisableDraftMode() {
   return (
     <div className="fixed bottom-4 right-4">
       <form action="/api/draft-mode/disable" id="disable-draft-mode-form">
-        <div>Test</div>
+        <Button type="submit">Disable Draft Mode</Button>
       </form>
-      <button form="disable-draft-mode-form" className="bg-gray-50 px-4 py-2 text-black hover:bg-gray-100 transition-colors duration-200 rounded-md shadow-sm">
-        Disable Draft Mode
-      </button>
     </div>
   );
 }

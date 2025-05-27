@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { submitContactForm, type ContactFormState } from "@/app/actions";
-import { Text } from "@/components/ui/text";
 import { useActionState } from "react";
 
 const initialState: ContactFormState = {
@@ -32,9 +31,6 @@ export function ContactForm() {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-6 bg-primary/10 rounded-xs shadow-lg">
-      <Text as="h2" variant="subtitle" className="text-primary text-center p-4">
-        Contactez-nous
-      </Text>
       <form action={formAction} className="space-y-4">
         <div>
           <label

@@ -2,56 +2,98 @@ import Link from "next/link";
 import { HStack } from "./ui/hstack";
 import { Text } from "./ui/text";
 import { VStack } from "./ui/vstack";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/utils";
 import Image from "next/image";
-import { RESTAURANT_LOGO_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 import { notFound } from "next/navigation";
+import { RESTAURANT_FOOTER_QUERY } from "@/sanity/lib/queries";
+import { FacebookIcon, InstagramIcon, MailIcon } from "lucide-react";
+import { PortableText } from "next-sanity";
+import { ClockIcon } from "lucide-react";
+import { PhoneCallIcon } from "lucide-react";
+import { MapPinIcon } from "lucide-react";
+import { Button } from "./ui/button";
 export const Footer = async () => {
-  const { data: restaurant } = await sanityFetch({
-    query: RESTAURANT_LOGO_QUERY,
+  const { data } = await sanityFetch({
+    query: RESTAURANT_FOOTER_QUERY,
     params: { slug: "la-cigale" },
   });
 
-  if (!restaurant) {
+  if (!data) {
     return notFound();
   }
 
+  const infos = [
+    {
+      icon: <MapPinIcon size={16} />,
+      text: data.address,
+    },
+    {
+      icon: <ClockIcon size={16} />,
+      text: <PortableText value={data.hours ?? []} />,
+    },
+    {
+      icon: <PhoneCallIcon size={16} />,
+      text: data.phone_number,
+    },
+  ];
+
   return (
-    <footer>
-      <VStack className="w-full h-64 justify-between bg-primary">
-        <HStack className="w-full h-full justify-around items-center p-4 text-background">
-          {restaurant.secondary_logo?.asset && (
+    <footer id="infos-pratiques">
+      <VStack className="w-full justify-between bg-primary">
+        <div className="flex flex-col items-center gap-8 px-8 py-16 w-full h-full text-background sm:flex-row sm:justify-around">
+          {data.secondary_logo?.asset && (
             <Image
-              src={urlFor(restaurant.secondary_logo).url()}
-              alt="alt"
+              src={urlFor(data.secondary_logo).url()}
+              alt={data.secondary_logo.alt ?? ""}
               width={120}
               height={120}
+              className="hidden sm:block"
             />
           )}
-          <VStack className="justify-between w-1/4">
-            <Link href="https://www.instagram.com/jean_charles_bouchaud/">
-              <Text>Instagram</Text>
-            </Link>
-            <Link href="https://www.facebook.com/jean.charles.bouchaud">
-              <Text>Facebook</Text>
-            </Link>
+          <VStack className="items-start">
+            {infos.map((info, index) => (
+              <HStack key={index}>
+                {info.icon}
+                <Text as="span" className="text-sm">
+                  {info.text}
+                </Text>
+              </HStack>
+            ))}
           </VStack>
-          <VStack className="justify-between w-1/4">
-            <Link href="mailto:jean.charles.bouchaud@gmail.com">
-              <Text>Contact</Text>
+          <HStack className="items-start gap-0">
+            {data.facebook_url && (
+              <Link href={data.facebook_url} target="_blank">
+                <Button variant="ghost" size="icon">
+                  <FacebookIcon />
+                </Button>
+              </Link>
+            )}
+            {data.instagram_url && (
+              <Link href={data.instagram_url} target="_blank">
+                <Button variant="ghost" size="icon">
+                  <InstagramIcon size={24} />
+                </Button>
+              </Link>
+            )}
+            <Link href="mailto:la-cigale@gmail.com">
+              <Button variant="ghost" size="icon">
+                <MailIcon />
+              </Button>
             </Link>
-            <Link href="/mentions-legales">
-              <Text>Mentions Légales</Text>
-            </Link>
-          </VStack>
-        </HStack>
+          </HStack>
+        </div>
         <HStack className="w-full justify-center bg-foreground p-1">
           <Text as="p" variant="muted" className="text-xs">
-            La Cigale 2025, tous droits réservés -{" "}
-            <Link href="https://www.malt.fr/profile/jeancharlesbouchaud">
-              Réalisé par Jean-Charles Bouchaud
-            </Link>
+            <Button variant="link" className="text-xs">
+              <Link href="/mentions-legales">© La Cigale 2025</Link>
+            </Button>
+            -
+            <Button variant="link" className="text-xs">
+              <Link href="https://www.malt.fr/profile/jeancharlesbouchaud">
+                Développé par Jean-Charles Bouchaud
+              </Link>
+            </Button>
           </Text>
         </HStack>
       </VStack>
