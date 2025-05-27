@@ -293,7 +293,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: RESTAURANT_QUERY
-// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks}
+// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu}
 export type RESTAURANT_QUERYResult = {
   _id: string;
   name: string | null;
@@ -386,6 +386,26 @@ export type RESTAURANT_QUERYResult = {
     };
     _key: string;
   }> | null;
+  restaurant_menu: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  } | null;
+  bar_menu: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  } | null;
 } | null;
 // Variable: RESTAURANT_LOGO_QUERY
 // Query: *[_type == "restaurant" && slug.current == $slug][0]{  main_logo, secondary_logo}
@@ -483,7 +503,7 @@ export type RESTAURANT_LEGAL_NOTICE_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks\n}": RESTAURANT_QUERYResult;
+    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu\n}": RESTAURANT_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  main_logo, secondary_logo\n}": RESTAURANT_LOGO_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  address, phone_number, facebook_url, instagram_url, hours, secondary_logo\n}": RESTAURANT_FOOTER_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  legal_notice\n}": RESTAURANT_LEGAL_NOTICE_QUERYResult;
