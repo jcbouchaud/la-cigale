@@ -7,5 +7,5 @@ export const client = createClient({
   dataset,
   apiVersion, // https://www.sanity.io/docs/api-versioning
   useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
-  stega: { studioUrl: "http://localhost:3000/studio" },
+  stega: { studioUrl: "/studio" },
 });
