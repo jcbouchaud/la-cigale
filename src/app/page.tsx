@@ -28,21 +28,25 @@ export default async function RestaurantsPage() {
           className="absolute bottom-0 left-1/2 -translate-x-1/2"
           targetId="main-image"
         />
-        <Image
-          src={urlFor(restaurant.main_logo).url()}
-          alt="alt"
-          width={300}
-          height={300}
-        />
+        {restaurant.main_logo && (
+          <Image
+            src={urlFor(restaurant.main_logo).url()}
+            alt="alt"
+            width={300}
+            height={300}
+          />
+        )}
       </section>
       <section id="main-image" className="w-full">
-        <Image
-          src={urlFor(restaurant.main_image).url()}
-          alt="alt"
-          width={getImageDimensions(restaurant.main_image.asset).width}
-          height={getImageDimensions(restaurant.main_image.asset).height}
-          className="w-full min-h-[500px] object-cover"
-        />
+        {restaurant.main_image?.asset && (
+          <Image
+            src={urlFor(restaurant.main_image).url()}
+            alt="alt"
+            width={getImageDimensions(restaurant.main_image?.asset).width}
+            height={getImageDimensions(restaurant.main_image.asset).height}
+            className="w-full min-h-[500px] object-cover"
+          />
+        )}
       </section>
       <section className="p-8">
         <PortableText value={restaurant.main_description ?? []} />
@@ -58,35 +62,42 @@ export default async function RestaurantsPage() {
       </section> */}
       <section className="p-8">
         <HStack className="flex-wrap items-end w-full gap-0 sm:px-8">
-          {restaurant.blocks.map((block, index) => (
-            <VStack
-              key={index}
-              className={cn(
-                index % 3 === 0
-                  ? "w-full"
-                  : index % 2 === 0
-                    ? "sm:w-2/3"
-                    : "sm:w-1/3",
-                "sm:p-4 mb-8 sm:align-baseline"
-              )}
-            >
-              <Image
-                src={urlFor(block.image).url()}
-                alt="alt"
-                width={getImageDimensions(block.image.asset).width}
-                height={getImageDimensions(block.image.asset).height}
-                className="w-full"
-              />
-              <VStack>
-                <Text as="h4" variant="subtitle" className="uppercase sm:py-4">
-                  {block.title}
-                </Text>
-                <Text as="p" className="font-delius italic">
-                  {block.description}
-                </Text>
+          {restaurant.blocks &&
+            restaurant.blocks.map((block, index) => (
+              <VStack
+                key={index}
+                className={cn(
+                  index % 3 === 0
+                    ? "w-full"
+                    : index % 2 === 0
+                      ? "sm:w-2/3"
+                      : "sm:w-1/3",
+                  "sm:p-4 mb-8 sm:align-baseline"
+                )}
+              >
+                {block.image?.asset && (
+                  <Image
+                    src={urlFor(block.image).url()}
+                    alt="alt"
+                    width={getImageDimensions(block.image.asset).width}
+                    height={getImageDimensions(block.image.asset).height}
+                    className="w-full"
+                  />
+                )}
+                <VStack>
+                  <Text
+                    as="h4"
+                    variant="subtitle"
+                    className="uppercase sm:py-4"
+                  >
+                    {block.title}
+                  </Text>
+                  <Text as="p" className="font-delius italic">
+                    {block.description}
+                  </Text>
+                </VStack>
               </VStack>
-            </VStack>
-          ))}
+            ))}
         </HStack>
       </section>
       <section className="w-full bg-background p-8">

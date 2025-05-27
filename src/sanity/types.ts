@@ -233,12 +233,38 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: RESTAURANT_QUERY
-// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_description, secondary_image, logo, blocks, secondary_logo}
+// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks}
 export type RESTAURANT_QUERYResult = {
   _id: string;
   name: string | null;
   slug: Slug | null;
   main_image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  main_logo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  secondary_logo: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -282,7 +308,6 @@ export type RESTAURANT_QUERYResult = {
     alt?: string;
     _type: "image";
   } | null;
-  logo: null;
   blocks: Array<{
     title?: string;
     description?: string;
@@ -301,7 +326,11 @@ export type RESTAURANT_QUERYResult = {
     };
     _key: string;
   }> | null;
-  secondary_logo: {
+} | null;
+// Variable: RESTAURANT_LOGO_QUERY
+// Query: *[_type == "restaurant" && slug.current == $slug][0]{  main_logo, secondary_logo}
+export type RESTAURANT_LOGO_QUERYResult = {
+  main_logo: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -314,11 +343,6 @@ export type RESTAURANT_QUERYResult = {
     alt?: string;
     _type: "image";
   } | null;
-} | null;
-// Variable: RESTAURANT_LOGO_QUERY
-// Query: *[_type == "restaurant" && slug.current == $slug][0]{  logo, secondary_logo}
-export type RESTAURANT_LOGO_QUERYResult = {
-  logo: null;
   secondary_logo: {
     asset?: {
       _ref: string;
@@ -338,7 +362,7 @@ export type RESTAURANT_LOGO_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_description, secondary_image, logo, blocks, secondary_logo\n}": RESTAURANT_QUERYResult;
-    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  logo, secondary_logo\n}": RESTAURANT_LOGO_QUERYResult;
+    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks\n}": RESTAURANT_QUERYResult;
+    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  main_logo, secondary_logo\n}": RESTAURANT_LOGO_QUERYResult;
   }
 }
