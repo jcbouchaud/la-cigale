@@ -25,7 +25,7 @@ export default async function RestaurantsPage() {
 
   return (
     <VStack className="w-full bg-primary/10 items-center">
-      <section className="w-full h-[90vh] sm:h-[80vh] flex items-center justify-center relative">
+      <section className="w-full h-[90vh] sm:h-screen flex items-center justify-center relative">
         <ScrollDownButton
           className="absolute bottom-0 left-1/2 -translate-x-1/2"
           targetId="main-image"
