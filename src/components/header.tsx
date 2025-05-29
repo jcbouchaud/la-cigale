@@ -1,12 +1,12 @@
 import { Sidebar } from "./sidebar";
 import { cn } from "@/lib/utils";
 import { HStack } from "./ui/hstack";
-import { Button } from "./ui/button";
-import { Text } from "./ui/text";
+
 import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { RESTAURANT_LOGO_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/utils";
+import { ReservationButton } from "./reservation-button";
 
 type HeaderProps = {
   className?: string;
@@ -37,12 +37,8 @@ export const Header = async ({ className }: HeaderProps) => {
             }
           />
         )}
-        <Button variant="outline">
-          <Text as="span" className="font-serif">
-            Réservation
-          </Text>
-        </Button>
       </HStack>
+      <ReservationButton />
     </header>
   );
 };

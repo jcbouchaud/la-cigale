@@ -39,7 +39,6 @@ export function Sidebar({ logo }: SidebarProps) {
           {[
             { label: "Lieu", href: "/#spot" },
             { label: "Cartes", href: "/#cartes" },
-            { label: "Réservation", href: "/" },
             { label: "Infos pratiques", href: "/#infos-pratiques" },
             { label: "Nous contacter", href: "/#contact" },
           ].map((item) => (
