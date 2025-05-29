@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Delius } from "next/font/google";
+import { Yeseva_One, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const delius = Delius({
-  variable: "--font-delius",
+const yesevaOne = Yeseva_One({
+  variable: "--font-yeseva-one",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${delius.variable} antialiased relative`}
+        className={`${yesevaOne.variable} ${workSans.variable} antialiased relative`}
       >
         {children}
       </body>

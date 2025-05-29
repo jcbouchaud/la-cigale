@@ -19,7 +19,7 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="w-full bg-primary hover:bg-primary/90"
+      className="w-full bg-primary hover:bg-primary/90 font-serif"
     >
       {pending ? "Envoi..." : "Envoyer"}
     </Button>

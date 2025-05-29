@@ -39,7 +39,7 @@ export function Sidebar({ logo }: SidebarProps) {
           {[
             { label: "Lieu", href: "#spot" },
             { label: "Cartes", href: "#cartes" },
-            { label: "Réservation", href: "/reservation" },
+            { label: "Réservation", href: "/" },
             { label: "Infos pratiques", href: "#infos-pratiques" },
             { label: "Nous contacter", href: "#contact" },
           ].map((item) => (
@@ -48,7 +48,10 @@ export function Sidebar({ logo }: SidebarProps) {
               href={item.href}
               onClick={() => setOpen(false)}
             >
-              <Text className="border-b border-border py-4 text-background text-xl">
+              <Text
+                variant="subtitle"
+                className="border-b border-border py-4 text-background"
+              >
                 {item.label}
               </Text>
             </Link>

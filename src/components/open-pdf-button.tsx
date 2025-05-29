@@ -13,7 +13,11 @@ export const OpenPdfButton = ({ url, children }: OpenPdfButtonProps) => {
   };
 
   return (
-    <Button onClick={() => openPdf(url)} size="lg">
+    <Button
+      onClick={() => openPdf(url)}
+      size="lg"
+      className="font-serif w-[160px]"
+    >
       {children}
     </Button>
   );

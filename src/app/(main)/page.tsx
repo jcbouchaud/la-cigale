@@ -24,7 +24,7 @@ export default async function RestaurantsPage() {
   }
 
   return (
-    <VStack className="w-full bg-primary/10 font-delius">
+    <VStack className="w-full bg-primary/10 items-center">
       <section className="w-full h-[70vh] flex items-center justify-center relative">
         <ScrollDownButton
           className="absolute bottom-0 left-1/2 -translate-x-1/2"
@@ -50,11 +50,11 @@ export default async function RestaurantsPage() {
           />
         )}
       </section>
-      <section className="p-8">
+      <section className="p-8 container">
         <PortableText value={data.main_description ?? []} />
       </section>
-      <section className="p-8" id="spot">
-        <HStack className="flex-wrap items-end w-full gap-0 sm:px-8">
+      <section className="p-8 container" id="spot">
+        <HStack className="flex-wrap items-end justify-between">
           {data.blocks &&
             data.blocks.map((block, index) => (
               <VStack
@@ -63,9 +63,9 @@ export default async function RestaurantsPage() {
                   index % 3 === 0
                     ? "w-full"
                     : index % 2 === 0
-                      ? "sm:w-2/3"
-                      : "sm:w-1/3",
-                  "sm:p-4 mb-8 sm:align-baseline"
+                      ? "sm:w-7/12"
+                      : "sm:w-4/12",
+                  "mb-8 sm:align-baseline"
                 )}
               >
                 {block.image?.asset && (
@@ -78,33 +78,39 @@ export default async function RestaurantsPage() {
                   />
                 )}
                 <VStack>
-                  <Text
-                    as="h4"
-                    variant="subtitle"
-                    className="uppercase sm:py-4"
-                  >
+                  <Text as="h4" variant="title" className="uppercase sm:py-4">
                     {block.title}
                   </Text>
-                  <Text as="p" className="font-delius italic">
-                    {block.description}
-                  </Text>
+                  <Text as="p">{block.description}</Text>
                 </VStack>
               </VStack>
             ))}
         </HStack>
       </section>
-      <section className="p-8 bg-background" id="cartes">
-        <HStack className="w-full justify-center items-center gap-8">
-          {data.restaurant_menu?.asset && (
-            <OpenPdfButton url={""}>Carte Restaurant</OpenPdfButton>
-          )}
-          {data.bar_menu?.asset && (
-            <OpenPdfButton url={""}>Carte Bar</OpenPdfButton>
-          )}
-        </HStack>
+      <section className="p-8 bg-background w-full" id="cartes">
+        <VStack className="w-full items-center">
+          <VStack className="container gap-8 items-center">
+            <Text as="h2" variant="title">
+              Cartes
+            </Text>
+            <HStack className="w-full justify-center items-center gap-8">
+              {data.restaurant_menu?.asset && (
+                <OpenPdfButton url={""}>Restaurant</OpenPdfButton>
+              )}
+              {data.bar_menu?.asset && (
+                <OpenPdfButton url={""}>Bar</OpenPdfButton>
+              )}
+            </HStack>
+          </VStack>
+        </VStack>
       </section>
-      <section className="p-8" id="contact">
-        <ContactForm />
+      <section className="p-8 w-full container" id="contact">
+        <VStack className="container gap-8 items-center">
+          <Text as="h2" variant="title">
+            Nous contacter
+          </Text>
+          <ContactForm />
+        </VStack>
       </section>
     </VStack>
   );

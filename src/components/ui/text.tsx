@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 const textVariants = cva("font-sans", {
   variants: {
     variant: {
-      title: "text-4xl font-bold tracking-tight",
-      subtitle: "text-2xl font-semibold tracking-tight",
-      body: "text-base font-normal",
-      emphasized: "text-base font-medium",
-      muted: "text-sm text-gray-500",
+      title: "text-2xl sm:text-4xl font-serif tracking-tight text-primary",
+      subtitle: "text-xl sm:text-2xl font-serif tracking-tight",
+      body: "text-base font-sans tracking-tight",
+      emphasized: "text-base font-sans tracking-tight",
+      muted: "text-sm text-muted-foreground",
     },
   },
   defaultVariants: {
