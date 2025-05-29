@@ -78,7 +78,11 @@ export default async function RestaurantsPage() {
                   />
                 )}
                 <VStack>
-                  <Text as="h4" variant="title" className="uppercase sm:py-4">
+                  <Text
+                    as="h4"
+                    variant="subtitle"
+                    className="uppercase sm:py-4"
+                  >
                     {block.title}
                   </Text>
                   <Text as="p">{block.description}</Text>

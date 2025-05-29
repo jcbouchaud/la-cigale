@@ -6,7 +6,7 @@ const textVariants = cva("font-sans", {
   variants: {
     variant: {
       title: "text-2xl sm:text-4xl font-serif tracking-tight text-primary",
-      subtitle: "text-xl sm:text-2xl font-serif tracking-tight",
+      subtitle: "text-xl sm:text-2xl font-serif tracking-tight text-primary",
       body: "text-base font-sans tracking-tight",
       emphasized: "text-base font-sans tracking-tight",
       muted: "text-sm text-muted-foreground",

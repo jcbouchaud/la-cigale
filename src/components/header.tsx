@@ -38,7 +38,7 @@ export const Header = async ({ className }: HeaderProps) => {
           />
         )}
         <Button variant="outline">
-          <Text as="span" className="uppercase font-serif">
+          <Text as="span" className="font-serif">
             Réservation
           </Text>
         </Button>
