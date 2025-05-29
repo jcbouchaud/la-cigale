@@ -16,7 +16,7 @@ export default async function LegalNoticePage() {
 
   return (
     <section className="p-8">
-      <VStack className="items-center">
+      <VStack className="items-center w-full">
         <VStack className="container gap-4">
           <Text as="h1" variant="title">
             Mentions légales

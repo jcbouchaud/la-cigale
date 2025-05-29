@@ -24,7 +24,7 @@ export const Header = async ({ className }: HeaderProps) => {
 
   return (
     <header>
-      <HStack className={cn("w-full justify-between p-4", className)}>
+      <HStack className={cn("w-screen justify-between p-4", className)}>
         {data?.secondary_logo?.asset && (
           <Sidebar
             logo={

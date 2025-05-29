@@ -28,7 +28,7 @@ export function Sidebar({ logo }: SidebarProps) {
           <MenuIcon className="w-6! h-6!" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="p-4 w-full sm:max-w-3/8">
+      <SheetContent side="left" className="p-4 w-screen sm:max-w-3/8">
         <SheetHeader>
           <SheetTitle className="sr-only">Menu</SheetTitle>
           <Link href="/" onClick={() => setOpen(false)}>
@@ -37,11 +37,11 @@ export function Sidebar({ logo }: SidebarProps) {
         </SheetHeader>
         <nav>
           {[
-            { label: "Lieu", href: "#spot" },
-            { label: "Cartes", href: "#cartes" },
+            { label: "Lieu", href: "/#spot" },
+            { label: "Cartes", href: "/#cartes" },
             { label: "Réservation", href: "/" },
-            { label: "Infos pratiques", href: "#infos-pratiques" },
-            { label: "Nous contacter", href: "#contact" },
+            { label: "Infos pratiques", href: "/#infos-pratiques" },
+            { label: "Nous contacter", href: "/#contact" },
           ].map((item) => (
             <Link
               key={item.href}
