@@ -15,13 +15,16 @@ export const ScrollDownButton = ({
   targetId,
 }: ScrollDownButtonProps) => {
   return (
-    <Link href={`#${targetId}`}>
+    <Link href={`#${targetId}`} aria-label="Scroll down">
       <Button
         size="icon"
         variant="ghost"
         className={cn(className, "animate-bounce")}
       >
-        <ChevronDown className="text-primary w-6! h-6!" />
+        <ChevronDown
+          className="text-primary w-6! h-6!"
+          aria-label="Scroll down"
+        />
       </Button>
     </Link>
   );

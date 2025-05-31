@@ -65,16 +65,24 @@ export const Footer = async () => {
           </VStack>
           <HStack className="items-start gap-0">
             {data.facebook_url && (
-              <Link href={data.facebook_url} target="_blank">
+              <Link
+                href={data.facebook_url}
+                target="_blank"
+                aria-label="Facebook"
+              >
                 <Button variant="ghost" size="icon">
-                  <FacebookIcon />
+                  <FacebookIcon aria-label="Facebook icon" />
                 </Button>
               </Link>
             )}
             {data.instagram_url && (
-              <Link href={data.instagram_url} target="_blank">
+              <Link
+                href={data.instagram_url}
+                target="_blank"
+                aria-label="Instagram"
+              >
                 <Button variant="ghost" size="icon">
-                  <InstagramIcon size={24} />
+                  <InstagramIcon aria-label="Instagram icon" />
                 </Button>
               </Link>
             )}

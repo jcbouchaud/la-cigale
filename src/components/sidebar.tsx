@@ -26,7 +26,7 @@ export function Sidebar({ logo }: SidebarProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button className="text-primary" size="icon" variant="ghost">
-          <MenuIcon className="w-6! h-6!" />
+          <MenuIcon className="w-6! h-6!" aria-label="Open menu" />
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-4 w-screen sm:max-w-3/8">

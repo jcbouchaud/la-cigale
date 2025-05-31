@@ -15,7 +15,7 @@ const getInstagramFeed = async () => {
     data: [
       {
         id: "1",
-        caption: "Test",
+        caption: "Caption 1",
         media_url: "https://picsum.photos/200/200",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -23,7 +23,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "2",
-        caption: "Test",
+        caption: "Caption 2",
         media_url: "https://picsum.photos/200/201",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -31,7 +31,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "3",
-        caption: "Test",
+        caption: "Caption 3",
         media_url: "https://picsum.photos/200/202",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -39,7 +39,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "4",
-        caption: "Test",
+        caption: "Caption 4",
         media_url: "https://picsum.photos/200/203",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -47,7 +47,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "5",
-        caption: "Test",
+        caption: "Caption 5",
         media_url: "https://picsum.photos/200/204",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -55,7 +55,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "6",
-        caption: "Test",
+        caption: "Caption 6",
         media_url: "https://picsum.photos/200/205",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -63,7 +63,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "7",
-        caption: "Test",
+        caption: "Caption 7",
         media_url: "https://picsum.photos/200/206",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -71,7 +71,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "8",
-        caption: "Test",
+        caption: "Caption 8",
         media_url: "https://picsum.photos/200/207",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -79,7 +79,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "9",
-        caption: "Test",
+        caption: "Caption 9",
         media_url: "https://picsum.photos/200/208",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -87,7 +87,7 @@ const getInstagramFeed = async () => {
       },
       {
         id: "10",
-        caption: "Test",
+        caption: "Caption 10",
         media_url: "https://picsum.photos/200/209",
         media_type: "IMAGE",
         timestamp: "2021-01-01",
@@ -120,7 +120,7 @@ export default async function InstaFeed() {
               ) : (
                 <Image
                   src={post.media_url}
-                  alt={post.caption}
+                  alt={`Instagram post ${post.id}`}
                   className="w-full h-full object-cover"
                   width={300}
                   height={300}
