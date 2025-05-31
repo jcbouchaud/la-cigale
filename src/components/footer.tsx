@@ -82,15 +82,10 @@ export const Footer = async () => {
         </div>
         <HStack className="w-full justify-center bg-foreground p-1">
           <Text as="p" variant="muted" className="text-xs">
-            <Button variant="link" className="text-xs">
-              <Link href="/mentions-legales">© La Cigale 2025</Link>
-            </Button>
-            -
-            <Button variant="link" className="text-xs">
-              <Link href="https://www.malt.fr/profile/jeancharlesbouchaud">
-                Développé par Jean-Charles Bouchaud
-              </Link>
-            </Button>
+            <Link href="/mentions-legales">© La Cigale 2025</Link> -{" "}
+            <Link href="https://www.malt.fr/profile/jeancharlesbouchaud">
+              Développé par Jean-Charles Bouchaud
+            </Link>
           </Text>
         </HStack>
       </VStack>
