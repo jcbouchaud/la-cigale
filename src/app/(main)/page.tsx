@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { VStack } from "@/components/ui/vstack";
 import { HStack } from "@/components/ui/hstack";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/utils";
+import { buildFileUrl, urlFor } from "@/sanity/lib/utils";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { PortableText } from "next-sanity";
 import { Text } from "@/components/ui/text";
@@ -23,6 +23,15 @@ export default async function RestaurantsPage() {
   if (!data) {
     notFound();
   }
+  const restaurantMenuUrl = buildFileUrl({
+    assetId: data.restaurant_menu?.file?.asset?._ref.split("-")[1] ?? "",
+    extension: data.restaurant_menu?.file?.asset?._ref.split("-")[2] ?? "",
+  });
+
+  const barMenuUrl = buildFileUrl({
+    assetId: data.bar_menu?.file?.asset?._ref.split("-")[1] ?? "",
+    extension: data.bar_menu?.file?.asset?._ref.split("-")[2] ?? "",
+  });
 
   return (
     <VStack className="w-full bg-primary/10 items-center">
@@ -99,11 +108,13 @@ export default async function RestaurantsPage() {
               Cartes
             </Text>
             <HStack className="w-full justify-center items-center gap-8">
-              {data.restaurant_menu?.asset && (
-                <OpenPdfButton url={""}>Restaurant</OpenPdfButton>
+              {data.restaurant_menu?.file && (
+                <OpenPdfButton url={restaurantMenuUrl}>
+                  Restaurant
+                </OpenPdfButton>
               )}
-              {data.bar_menu?.asset && (
-                <OpenPdfButton url={""}>Bar</OpenPdfButton>
+              {data.bar_menu?.file && (
+                <OpenPdfButton url={barMenuUrl}>Bar</OpenPdfButton>
               )}
             </HStack>
           </VStack>

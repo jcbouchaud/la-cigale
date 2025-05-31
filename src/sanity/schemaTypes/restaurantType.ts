@@ -189,20 +189,48 @@ export const restaurantType = defineType({
     defineField({
       title: "Carte Restaurant",
       name: "restaurant_menu",
-      type: "file",
+      type: "document",
       validation: (Rule) => Rule.required().error("Carte Restaurant requise"),
-      options: {
-        accept: "application/pdf",
-      },
+      fields: [
+        {
+          type: "file",
+          name: "file",
+          title: "Fichier",
+          options: {
+            accept: "application/pdf",
+          },
+          validation: (Rule) => Rule.required().error("Fichier requis"),
+        },
+        {
+          type: "string",
+          name: "alt",
+          title: "Texte alternatif",
+          validation: (Rule) => Rule.required().error("Texte alternatif requis"),
+        },
+      ],
     }),
     defineField({
       title: "Carte Bar",
       name: "bar_menu",
-      type: "file",
+      type: "document",
       validation: (Rule) => Rule.required().error("Carte Bar requise"),
-      options: {
-        accept: "application/pdf",
-      },
+      fields: [
+        {
+          type: "file",
+          name: "file",
+          title: "Fichier",
+          options: {
+            accept: "application/pdf",
+          },
+          validation: (Rule) => Rule.required().error("Fichier requis"),
+        },
+        {
+          type: "string",
+          name: "alt",
+          title: "Texte alternatif",
+          validation: (Rule) => Rule.required().error("Texte alternatif requis"),
+        },
+      ],
     }),
   ],
   preview: {
