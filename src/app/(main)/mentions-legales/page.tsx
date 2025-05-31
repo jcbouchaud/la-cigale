@@ -4,10 +4,12 @@ import { RESTAURANT_LEGAL_NOTICE_QUERY } from "@/sanity/lib/queries";
 import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 import { Text } from "@/components/ui/text";
+import { restaurantSlug } from "@/lib/env";
+
 export default async function LegalNoticePage() {
   const { data } = await sanityFetch({
     query: RESTAURANT_LEGAL_NOTICE_QUERY,
-    params: { slug: "la-cigale" },
+    params: { slug: restaurantSlug },
   });
 
   if (!data) {

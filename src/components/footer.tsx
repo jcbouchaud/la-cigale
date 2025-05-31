@@ -7,16 +7,18 @@ import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { notFound } from "next/navigation";
 import { RESTAURANT_FOOTER_QUERY } from "@/sanity/lib/queries";
-import { FacebookIcon, InstagramIcon, MailIcon } from "lucide-react";
+import { FacebookIcon, InstagramIcon } from "lucide-react";
 import { PortableText } from "next-sanity";
 import { ClockIcon } from "lucide-react";
 import { PhoneCallIcon } from "lucide-react";
 import { MapPinIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { restaurantSlug } from "@/lib/env";
+
 export const Footer = async () => {
   const { data } = await sanityFetch({
     query: RESTAURANT_FOOTER_QUERY,
-    params: { slug: "la-cigale" },
+    params: { slug: restaurantSlug },
   });
 
   if (!data) {
@@ -76,11 +78,6 @@ export const Footer = async () => {
                 </Button>
               </Link>
             )}
-            <Link href="mailto:la-cigale@gmail.com">
-              <Button variant="ghost" size="icon">
-                <MailIcon />
-              </Button>
-            </Link>
           </HStack>
         </div>
         <HStack className="w-full justify-center bg-foreground p-1">

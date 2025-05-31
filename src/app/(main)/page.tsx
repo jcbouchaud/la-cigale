@@ -12,11 +12,12 @@ import { cn } from "@/lib/utils";
 import { ScrollDownButton } from "@/components/scroll-down-button";
 import { OpenPdfButton } from "@/components/open-pdf-button";
 import { ContactForm } from "@/components/contact-form";
-
+import { restaurantSlug } from "@/lib/env";
+import InstaFeed from "@/components/insta-feed";
 export default async function RestaurantsPage() {
   const { data } = await sanityFetch({
     query: RESTAURANT_QUERY,
-    params: { slug: "la-cigale" },
+    params: { slug: restaurantSlug },
   });
 
   if (!data) {
@@ -108,12 +109,17 @@ export default async function RestaurantsPage() {
           </VStack>
         </VStack>
       </section>
-      <section className="p-8 w-full container" id="contact">
-        <VStack className="container gap-8 items-center">
-          <Text as="h2" variant="title">
-            Nous contacter
-          </Text>
-          <ContactForm />
+      <section className="p-8 w-full" id="contact">
+        <InstaFeed />
+      </section>
+      <section className="p-8 w-full bg-background" id="contact">
+        <VStack className="w-full items-center">
+          <VStack className="container gap-8 items-center">
+            <Text as="h2" variant="title">
+              Nous contacter
+            </Text>
+            <ContactForm />
+          </VStack>
         </VStack>
       </section>
     </VStack>

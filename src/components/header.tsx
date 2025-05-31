@@ -7,6 +7,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { RESTAURANT_LOGO_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/utils";
 import { ReservationButton } from "./reservation-button";
+import { restaurantSlug } from "@/lib/env";
 
 type HeaderProps = {
   className?: string;
@@ -15,7 +16,7 @@ type HeaderProps = {
 export const Header = async ({ className }: HeaderProps) => {
   const { data } = await sanityFetch({
     query: RESTAURANT_LOGO_QUERY,
-    params: { slug: "la-cigale" },
+    params: { slug: restaurantSlug },
   });
 
   if (!data) {

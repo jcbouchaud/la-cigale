@@ -1,5 +1,6 @@
 "use client";
 
+import { zenchefRestaurantId } from "@/lib/env";
 import { useEffect } from "react";
 
 const useZenchefScript = () => {
@@ -26,7 +27,7 @@ export const ReservationButton = () => {
   return (
     <div
       className="zc-widget-config"
-      data-restaurant="364042"
+      data-restaurant={zenchefRestaurantId}
       data-open="2000"
     />
   );
