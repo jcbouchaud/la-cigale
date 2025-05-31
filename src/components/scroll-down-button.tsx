@@ -16,7 +16,11 @@ export const ScrollDownButton = ({
 }: ScrollDownButtonProps) => {
   return (
     <Link href={`#${targetId}`}>
-      <Button size="icon" variant="ghost" className={cn(className)}>
+      <Button
+        size="icon"
+        variant="ghost"
+        className={cn(className, "animate-bounce")}
+      >
         <ChevronDown className="text-primary w-6! h-6!" />
       </Button>
     </Link>
