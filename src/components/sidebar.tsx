@@ -14,6 +14,7 @@ import Link from "next/link";
 import { HStack } from "./ui/hstack";
 
 import { ReactNode, useState } from "react";
+import { zenchefRestaurantId } from "@/lib/env";
 
 type SidebarProps = {
   logo: ReactNode;
@@ -39,6 +40,10 @@ export function Sidebar({ logo }: SidebarProps) {
           {[
             { label: "Lieu", href: "/#spot" },
             { label: "Cartes", href: "/#cartes" },
+            {
+              label: "Réservation",
+              href: `https://bookings.zenchef.com/results?rid=${zenchefRestaurantId}`,
+            },
             { label: "Infos pratiques", href: "/#infos-pratiques" },
             { label: "Nous contacter", href: "/#contact" },
           ].map((item) => (
