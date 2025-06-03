@@ -9,7 +9,6 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import { PortableText } from "next-sanity";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { ScrollDownButton } from "@/components/scroll-down-button";
 import { OpenPdfButton } from "@/components/open-pdf-button";
 import { ContactForm } from "@/components/contact-form";
 import { restaurantSlug } from "@/lib/env";
