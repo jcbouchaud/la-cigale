@@ -34,28 +34,26 @@ export default async function RestaurantsPage() {
   });
 
   return (
-    <VStack className="w-full bg-primary/10 items-center">
-      <section className="w-full h-[90vh] sm:h-screen flex items-center justify-center relative">
-        <ScrollDownButton
-          className="absolute bottom-0 left-1/2 -translate-x-1/2"
-          targetId="main-image"
-        />
-        {data.main_logo && (
-          <Image
-            src={urlFor(data.main_logo).url()}
-            alt={data.main_logo.alt ?? "Logo de la Cigale"}
-            width={300}
-            height={300}
-          />
-        )}
-      </section>
-      <section id="main-image" className="w-full">
+    <VStack className="w-full bg-primary/10 items-center gap-0">
+      <section className="w-full h-[80vh] flex items-center justify-center relative">
+        <div className="w-full h-full absolute top-0 left-0 bg-background/20" />
         {data.main_image?.asset && (
           <Image
             src={urlFor(data.main_image).url()}
             alt={data.main_image.alt ?? "Image de la Cigale"}
             width={getImageDimensions(data.main_image?.asset).width}
             height={getImageDimensions(data.main_image.asset).height}
+            className="object-cover h-full"
+          />
+        )}
+      </section>
+      <section id="main-image" className="w-full p-8 mt-2 sm:mt-16  container">
+        {data.secondary_image?.asset && (
+          <Image
+            src={urlFor(data.secondary_image).url()}
+            alt={data.secondary_image.alt ?? "Image de la Cigale"}
+            width={getImageDimensions(data.secondary_image?.asset).width}
+            height={getImageDimensions(data.secondary_image.asset).height}
             className="w-full min-h-[500px] object-cover"
           />
         )}
