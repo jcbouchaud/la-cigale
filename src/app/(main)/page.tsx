@@ -34,7 +34,7 @@ export default async function RestaurantsPage() {
 
   return (
     <VStack className="w-full bg-primary/10 items-center gap-0">
-      <section className="w-full h-[80vh] flex items-center justify-center relative">
+      <section className="w-full h-[85vh] flex items-center justify-center relative">
         <div className="w-full h-full absolute top-0 left-0 bg-background/20" />
         {data.main_image?.asset && (
           <Image
@@ -104,16 +104,30 @@ export default async function RestaurantsPage() {
             <Text as="h2" variant="title">
               Cartes
             </Text>
-            <HStack className="w-full justify-center items-center gap-8">
-              {data.restaurant_menu?.file && (
-                <OpenPdfButton url={restaurantMenuUrl}>
-                  Restaurant
-                </OpenPdfButton>
+            <VStack className="w-full justify-center items-top gap-8 sm:flex-row sm:items-start">
+              {data.menus_image?.asset && (
+                <Image
+                  src={urlFor(data.menus_image).url()}
+                  alt={data.menus_image.alt ?? "Image des menus"}
+                  width={getImageDimensions(data.menus_image.asset).width}
+                  height={getImageDimensions(data.menus_image.asset).height}
+                  className="w-full sm:max-w-[300px]"
+                />
               )}
-              {data.bar_menu?.file && (
-                <OpenPdfButton url={barMenuUrl}>Bar</OpenPdfButton>
-              )}
-            </HStack>
+              <VStack className="gap-4 items-center">
+                <HStack className="w-full justify-between sm:justify-start sm:gap-8">
+                  {data.restaurant_menu?.file && (
+                    <OpenPdfButton url={restaurantMenuUrl}>
+                      Restaurant
+                    </OpenPdfButton>
+                  )}
+                  {data.bar_menu?.file && (
+                    <OpenPdfButton url={barMenuUrl}>Bar</OpenPdfButton>
+                  )}
+                </HStack>
+                <Text as="p">{data.menus_image?.texte}</Text>
+              </VStack>
+            </VStack>
           </VStack>
         </VStack>
       </section>

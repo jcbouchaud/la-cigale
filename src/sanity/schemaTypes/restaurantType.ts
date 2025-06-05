@@ -187,6 +187,31 @@ export const restaurantType = defineType({
       validation: (Rule) => Rule.required().error("Mentions légales requises"),
     }),
     defineField({
+      title: "Image des menus",
+      name: "menus_image",
+      type: "image",
+      validation: (Rule) => Rule.required().error("Image des menus requise"),
+      options: {
+        hotspot: true,
+        accept: "image/jpeg",
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Texte alternatif",
+          validation: (Rule) =>
+            Rule.required().error("Texte alternatif requis"),
+        },
+        {
+          name: "texte",
+          type: "string",
+          title: "Texte",
+          validation: (Rule) => Rule.required().error("Texte requis"),
+        },
+      ],
+    }),
+    defineField({
       title: "Carte Restaurant",
       name: "restaurant_menu",
       type: "document",
@@ -205,7 +230,8 @@ export const restaurantType = defineType({
           type: "string",
           name: "alt",
           title: "Texte alternatif",
-          validation: (Rule) => Rule.required().error("Texte alternatif requis"),
+          validation: (Rule) =>
+            Rule.required().error("Texte alternatif requis"),
         },
       ],
     }),
@@ -228,7 +254,8 @@ export const restaurantType = defineType({
           type: "string",
           name: "alt",
           title: "Texte alternatif",
-          validation: (Rule) => Rule.required().error("Texte alternatif requis"),
+          validation: (Rule) =>
+            Rule.required().error("Texte alternatif requis"),
         },
       ],
     }),

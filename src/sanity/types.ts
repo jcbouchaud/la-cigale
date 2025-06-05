@@ -204,6 +204,20 @@ export type Restaurant = {
     _type: "block";
     _key: string;
   }>;
+  menus_image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    texte?: string;
+    _type: "image";
+  };
   restaurant_menu?: {
     file?: {
       asset?: {
@@ -299,7 +313,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: RESTAURANT_QUERY
-// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu}
+// Query: *[_type == "restaurant" && slug.current == $slug][0]{  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu, menus_image}
 export type RESTAURANT_QUERYResult = {
   _id: string;
   name: string | null;
@@ -418,6 +432,20 @@ export type RESTAURANT_QUERYResult = {
     };
     alt?: string;
   } | null;
+  menus_image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    texte?: string;
+    _type: "image";
+  } | null;
 } | null;
 // Variable: RESTAURANT_LOGO_QUERY
 // Query: *[_type == "restaurant" && slug.current == $slug][0]{  main_logo, secondary_logo}
@@ -515,7 +543,7 @@ export type RESTAURANT_LEGAL_NOTICE_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu\n}": RESTAURANT_QUERYResult;
+    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  _id, name, slug, main_image, main_logo, secondary_logo, main_description, secondary_image, blocks, restaurant_menu, bar_menu, menus_image\n}": RESTAURANT_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  main_logo, secondary_logo\n}": RESTAURANT_LOGO_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  address, phone_number, facebook_url, instagram_url, hours, secondary_logo\n}": RESTAURANT_FOOTER_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  legal_notice\n}": RESTAURANT_LEGAL_NOTICE_QUERYResult;
