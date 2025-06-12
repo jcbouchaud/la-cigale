@@ -28,7 +28,10 @@ export function Sidebar({ logo }: SidebarProps) {
           <MenuIcon className="w-6! h-6!" aria-label="Open menu" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="p-4 w-screen sm:max-w-3/8">
+      <SheetContent
+        side="left"
+        className="p-4 w-screen sm:max-w-3/8 overflow-y-scroll"
+      >
         <SheetHeader>
           <SheetTitle className="sr-only">Menu</SheetTitle>
           <Link href="/" onClick={() => setOpen(false)}>
