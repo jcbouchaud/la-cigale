@@ -56,7 +56,7 @@ export default async function RestaurantsPage() {
           />
         )}
       </section>
-      <section className="p-8 container">
+      <section className="px-8 container">
         <PortableText value={data.main_description ?? []} />
       </section>
       <section className="p-8 container" id="spot">
