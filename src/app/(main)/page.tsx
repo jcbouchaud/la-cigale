@@ -33,7 +33,7 @@ export default async function RestaurantsPage() {
 
   return (
     <VStack className="w-full bg-primary/10 items-center gap-0">
-      <section className="w-full h-[85vh] flex items-center justify-center relative">
+      <section className="w-full h-[80vh] sm:h-[85vh] flex items-center justify-center relative">
         <div className="w-full h-full absolute top-0 left-0 bg-background/20" />
         {data.main_image?.asset && (
           <Image
