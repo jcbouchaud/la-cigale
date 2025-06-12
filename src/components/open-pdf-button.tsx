@@ -9,7 +9,7 @@ type OpenPdfButtonProps = {
 
 export const OpenPdfButton = ({ url, children }: OpenPdfButtonProps) => {
   const openPdf = (url: string) => {
-    window.open(url, "_blank");
+    window.open(url);
   };
 
   return (
