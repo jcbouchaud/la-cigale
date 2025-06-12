@@ -19,3 +19,8 @@ export const RESTAURANT_LEGAL_NOTICE_QUERY =
   defineQuery(`*[_type == "restaurant" && slug.current == $slug][0]{
   legal_notice
 }`);
+
+export const RESTAURANT_SECONDARY_IMAGE_QUERY =
+  defineQuery(`*[_type == "restaurant" && slug.current == $slug][0]{
+  secondary_image
+}`);

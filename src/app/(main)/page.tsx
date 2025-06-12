@@ -10,7 +10,6 @@ import { PortableText } from "next-sanity";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { OpenPdfButton } from "@/components/open-pdf-button";
-import { ContactForm } from "@/components/contact-form";
 import { restaurantSlug } from "@/lib/env";
 import InstaFeed from "@/components/insta-feed";
 export default async function RestaurantsPage() {
@@ -42,7 +41,7 @@ export default async function RestaurantsPage() {
             alt={data.main_image.alt ?? "Image de la Cigale"}
             width={getImageDimensions(data.main_image?.asset).width}
             height={getImageDimensions(data.main_image.asset).height}
-            className="object-cover h-full"
+            className="object-cover h-full sm:object-bottom"
           />
         )}
       </section>
@@ -114,7 +113,7 @@ export default async function RestaurantsPage() {
                   className="w-full sm:max-w-[300px]"
                 />
               )}
-              <VStack className="gap-4 items-center">
+              <VStack className="gap-4 items-center max-w-[500px]">
                 <HStack className="w-full justify-between sm:justify-start sm:gap-8">
                   {data.restaurant_menu?.file && (
                     <OpenPdfButton url={restaurantMenuUrl}>
@@ -131,18 +130,8 @@ export default async function RestaurantsPage() {
           </VStack>
         </VStack>
       </section>
-      <section className="p-8 w-full" id="contact">
+      <section className="sm:p-8 w-full" id="contact">
         <InstaFeed />
-      </section>
-      <section className="p-8 w-full bg-background" id="contact">
-        <VStack className="w-full items-center">
-          <VStack className="container gap-8 items-center">
-            <Text as="h2" variant="title">
-              Nous contacter
-            </Text>
-            <ContactForm />
-          </VStack>
-        </VStack>
       </section>
     </VStack>
   );

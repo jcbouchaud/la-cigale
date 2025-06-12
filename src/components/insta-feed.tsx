@@ -101,41 +101,39 @@ export default async function InstaFeed() {
   const instagramFeed = await getInstagramFeed();
 
   return (
-    <>
-      <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-5 gap-4">
-        {instagramFeed.data.map((post: InstagramPost) => (
-          <div key={post.id} className="relative group w-full">
-            <Link
-              href={post.permalink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative"
-            >
-              {post.media_type === "VIDEO" ? (
-                <video
-                  src={post.media_url}
-                  controls={false}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={post.media_url}
-                  alt={`Instagram post ${post.id}`}
-                  className="w-full h-full object-cover"
-                  width={300}
-                  height={300}
-                  priority
-                />
-              )}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-background/50 bg-opacity-50 flex items-center justify-center p-4 w-full h-full">
-                <p className="text-white text-center text-xs truncate">
-                  {post.caption}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-5 gap-4">
+      {instagramFeed.data.map((post: InstagramPost) => (
+        <div key={post.id} className="relative group w-full">
+          <Link
+            href={post.permalink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative"
+          >
+            {post.media_type === "VIDEO" ? (
+              <video
+                src={post.media_url}
+                controls={false}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={post.media_url}
+                alt={`Instagram post ${post.id}`}
+                className="w-full h-full object-cover"
+                width={200}
+                height={200}
+                priority
+              />
+            )}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-background/50 bg-opacity-50 flex items-center justify-center p-4 w-full h-full">
+              <p className="text-white text-center text-xs truncate">
+                {post.caption}
+              </p>
+            </div>
+          </Link>
+        </div>
+      ))}
+    </div>
   );
 }

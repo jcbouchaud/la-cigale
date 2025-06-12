@@ -538,6 +538,23 @@ export type RESTAURANT_LEGAL_NOTICE_QUERYResult = {
     _key: string;
   }> | null;
 } | null;
+// Variable: RESTAURANT_SECONDARY_IMAGE_QUERY
+// Query: *[_type == "restaurant" && slug.current == $slug][0]{  secondary_image}
+export type RESTAURANT_SECONDARY_IMAGE_QUERYResult = {
+  secondary_image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -547,5 +564,6 @@ declare module "@sanity/client" {
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  main_logo, secondary_logo\n}": RESTAURANT_LOGO_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  address, phone_number, facebook_url, instagram_url, hours, secondary_logo\n}": RESTAURANT_FOOTER_QUERYResult;
     "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  legal_notice\n}": RESTAURANT_LEGAL_NOTICE_QUERYResult;
+    "*[_type == \"restaurant\" && slug.current == $slug][0]{\n  secondary_image\n}": RESTAURANT_SECONDARY_IMAGE_QUERYResult;
   }
 }
